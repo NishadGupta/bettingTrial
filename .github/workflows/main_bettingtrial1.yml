@@ -57,12 +57,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
-      - name: Debug PATH and Gunicorn
-        run: |
-          echo "PATH: $PATH"
-          which gunicorn
-          
+        
       - name: Run Flask Application with Gunicorn
         run: |
           source venv/bin/activate
