@@ -12,4 +12,4 @@ Werkzeug==2.2.3
 requests
 gunicorn==20.1.0
 flask_cors
-mysql
+mysql-connector-python
