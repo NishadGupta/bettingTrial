@@ -5,7 +5,6 @@ from model.loginPlayer import loginPlayer
 from model.createGameHandler import createGameHandler
 import mysql.connector
 from datetime import datetime
-from PIL import Image
 import json
 import os
 import ast
