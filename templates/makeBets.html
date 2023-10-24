@@ -1,0 +1,22 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+<div class="card-header"><h2>Betting Page</h2></div>
+    <div class="card-body">
+    <!-- <form method="POST" action="/makeBets"> -->
+    <div class="login-container">
+        <label for="bet">Place your bets</label>
+        <input name="bet" id="bet"/>
+        <button onclick="placeBets()">Bet</button>
+    </div>
+    <!-- </form> -->
+</div>
+<script>
+    const socket = io();
+
+    placeBets = () => {
+        bet = document.getElementById("bet").value
+        socket.emit('place_bets', { 'route': window.location.pathname.split('makeBets/')[1], 'bet': bet })
+    }
+
+    socket.on('results_win', () => { window.location.href = '../winner' })
+    socket.on('results_lose', () => { window.location.href = '../loser' })
+</script>

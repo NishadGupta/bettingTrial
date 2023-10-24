@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Betting Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+</head>
+<body>
+    <div id="games-list", class="games-list"></div>
+    <script>
+        const socket = io();
+        socket.on('connect', () => {
+            socket.emit('listGames');
+        });
+
+        joinGame = (event) => {
+            roomNumber = event.srcElement.parentNode.innerHTML.split(',')[0].split(' ')[1]
+            console.log('selection', roomNumber)
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", '/selectGame', true);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    redirect(xhr.responseText)
+                }
+            }
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(roomNumber);
+        }
+
+        redirect = data => {
+            data = JSON.parse(data)
+            window.location.href = `../${data.url}`
+        }
+
+        socket.on('get_games_list', (data) => {
+            console.log(data)
+            roomsData = data.rooms
+            for (let roomNumber in roomsData) {
+                const elem = document.createElement('div', {'class': 'game_list_item'})
+                elem.innerHTML = `Room: ${roomNumber}, Users: ${roomsData[roomNumber]}`
+
+                const select = document.createElement('button')
+                select.innerHTML = 'Join'
+                select.onclick = joinGame
+
+                elem.appendChild(select)
+                document.getElementById("games-list").appendChild(elem)
+            }
+        });
+
+        
+
+
+    </script>
+</body>
+</html>
