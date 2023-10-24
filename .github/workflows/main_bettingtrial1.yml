@@ -57,11 +57,11 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-        
+
       - name: Run Flask Application with Gunicorn
         run: |
           source venv/bin/activate
-          /path/to/venv/bin/gunicorn -w 4 -b 0.0.0.0:8000 app:app  # Replace "app" with your Flask app module
+          gunicorn -w 4 -b 0.0.0.0:8000 app:app  # Replace "app" with your Flask app module
         env:
           APP_SETTINGS: production
 
