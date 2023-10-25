@@ -21,7 +21,7 @@ mydb = mysql.connector.connect(
     host="betting-game.mysql.database.azure.com",
     port=3306,
     database="bettinggame", 
-    ssl_ca="DigiCertGlobalRootCA.crt.pem", 
+    ssl_ca="./certs/DigiCertGlobalRootCA.crt.pem", 
     ssl_disabled=False
     )
 
