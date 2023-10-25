@@ -60,7 +60,7 @@ def register():
 @app.route("/loginPlayer",  methods = ["GET", "POST"])
 @cross_origin()
 def login():
-    return loginPlayer(mydb, request)
+    return loginPlayer(request)
 
 @app.route("/bet", methods=["POST"])
 def bet():
