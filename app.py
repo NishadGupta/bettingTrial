@@ -39,7 +39,7 @@ game_reward = {} # key = game_uuid, value = game's final reward
 @app.route("/")
 @cross_origin()
 def index():
-    return loginPlayer(mydb, request)
+    return loginPlayer(request)
 
 @app.route('/game/<route>')
 def game(route):

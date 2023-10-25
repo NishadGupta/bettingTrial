@@ -1,6 +1,16 @@
 from flask import Blueprint, render_template, redirect, url_for, jsonify
+import mysql.connector
 
-def loginPlayer(mydb, request):
+def loginPlayer(request):
+    mydb = mysql.connector.connect(
+    user="Nishad", 
+    password="Game@1998",
+    host="betting-game.mysql.database.azure.com",
+    port=3306,
+    database="bettinggame", 
+    ssl_ca="./certs/DigiCertGlobalRootCA.crt.pem", 
+    ssl_disabled=False
+    )
     if request.method == "POST":
         data = request.get_json()
         if 'uuid' in data and data['uuid']:
