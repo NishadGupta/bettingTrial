@@ -144,7 +144,7 @@ def createGame(data):
     host="betting-game.mysql.database.azure.com",
     port=3306,
     database="bettinggame", 
-    ssl_ca="DigiCertGlobalRootCA.crt.pem", 
+    ssl_ca="./certs/DigiCertGlobalRootCA.crt.pem",
     ssl_disabled=False
     )
 
@@ -195,7 +195,7 @@ def listGames(data):
     host="betting-game.mysql.database.azure.com",
     port=3306,
     database="bettinggame", 
-    ssl_ca="DigiCertGlobalRootCA.crt.pem", 
+    ssl_ca="./certs/DigiCertGlobalRootCA.crt.pem",
     ssl_disabled=False
     )
     mycursor = mydb.cursor()
@@ -233,7 +233,7 @@ def selectGame(data):
     host="betting-game.mysql.database.azure.com",
     port=3306,
     database="bettinggame", 
-    ssl_ca="DigiCertGlobalRootCA.crt.pem", 
+    ssl_ca="./certs/DigiCertGlobalRootCA.crt.pem",
     ssl_disabled=False
     )
     if 'uuid' not in data or not data['uuid']:
@@ -338,7 +338,7 @@ def place_bets(data):
     host="betting-game.mysql.database.azure.com",
     port=3306,
     database="bettinggame", 
-    ssl_ca="DigiCertGlobalRootCA.crt.pem", 
+    ssl_ca="./certs/DigiCertGlobalRootCA.crt.pem",
     ssl_disabled=False
     )
 
